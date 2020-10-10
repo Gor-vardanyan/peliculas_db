@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "633275522",
-    "database": "database_development",
+    "database": "peliculas_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

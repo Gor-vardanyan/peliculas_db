@@ -3,5 +3,6 @@ const OrderController = require('../controllers/OrderController');
 
 //Endpoint con get para conectar express mediante el ruter y su controllador
 route.get('/', OrderController.getAll);
+route.post('/', OrderController.create);
 
 module.exports = route;

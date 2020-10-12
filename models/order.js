@@ -1,32 +1,26 @@
 'use strict';
 const {
-  Model
+    Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Order extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      this.belongsTo(models.User)
-      this.hasMany(models.Movie, {through: models.MovieOrder})
-    }
-  };
-  Order.init({
-    UserId: {
-    type: DataTypes.STRING, 
-    allowNull:false  
-  },
-    status: {
-    type: DataTypes.STRING, 
-    allowNull:false  
-  },
-    returnDate: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Order',
-  });
-  return Order;
+    class Order extends Model {
+        /**
+         * Helper method for defining associations.
+         * This method is not a part of Sequelize lifecycle.
+         * The `models/index` file will call this method automatically.
+         */
+        static associate(models) {
+            this.belongsTo(models.User); //inversa de One to Many
+            this.belongsToMany(models.Movie, { through: models.MovieOrder });
+        }
+    };
+    Order.init({
+        status: DataTypes.STRING,
+        returnDate: DataTypes.DATE,
+        UserId: DataTypes.INTEGER
+    }, {
+        sequelize,
+        modelName: 'Order',
+    });
+    return Order;
 };

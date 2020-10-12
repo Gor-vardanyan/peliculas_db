@@ -22,7 +22,7 @@ module.exports = {
       release_date: {
         type: Sequelize.STRING
       },
-      rating: {
+      vote_average: {
         type: Sequelize.FLOAT
       },
       createdAt: {

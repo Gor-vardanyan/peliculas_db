@@ -14,15 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   MovieOrder.init({
-    MovieId: { 
-      type: DataTypes.STRING, 
-      allowNull:false  
-    },
-    OrderId: { 
-      type: DataTypes.STRING, 
-      allowNull:false  
-    }
-  },{
+    MovieId: DataTypes.INTEGER,
+    OrderId: DataTypes.INTEGER
+  }, {
     sequelize,
     modelName: 'MovieOrder',
   });

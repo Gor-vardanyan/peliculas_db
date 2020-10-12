@@ -33,7 +33,7 @@ const OrderController = {
             })
         }
     },  
-    create(req, res) {
+    async create(req, res) {
         const returnDate = new Date();
         returnDate.setDate(returnDate.getDate() + 2)
         Order.create({
@@ -42,7 +42,7 @@ const OrderController = {
                 UserId: req.user.id
             })
             .then(order => {
-                return order.addMovie(req.body.movies); //añade en OrderMovies las movies con el OrderId
+                return order.addMovie(req.body.movies);
             })
             .then(() => res.send({
                 message: 'Order successfully created!'

@@ -11,10 +11,10 @@ const MovieController = {
             res.status(500).send({ message: 'There was a problem trying to get the movies' })
         }
     },
-    async getOne(req, res) {
+    async getByPk(req, res) {
         try {
             const movie = await Movie.findOne({where: {
-                id: req.body.id
+                id: req.params.id
               }});
             res.send(movie);
         } catch (error) {
@@ -25,7 +25,7 @@ const MovieController = {
     async getByTitle(req, res) {
         try {
             const movie = await Movie.findOne({where: {
-                title: req.body.title
+                title: req.params.title
               }});
             res.send(movie);
         } catch (error) {

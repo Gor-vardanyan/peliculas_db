@@ -37,7 +37,7 @@ const OrderController = {
         const returnDate = new Date();
         returnDate.setDate(returnDate.getDate() + 2)
         Order.create({
-                status: 'cancelled',
+                status: 'ordered',
                 returnDate,
                 UserId: req.user.id
             })

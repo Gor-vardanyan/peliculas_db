@@ -6,6 +6,7 @@ const addMovies = async(movies,page) => {
   const res = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=cea68b520beecac6718820e4ac576c3a&append_to_response=credits&language=es-ES&page=' + page);
   const now = new Date();
   const moviesChunk =  res.data.results.map(movie => ({
+      //id: movie.id,
       title: movie.title,
       poster_path: movie.poster_path,
       release_date: movie.release_date,

@@ -1,8 +1,11 @@
 const {User} = require('../models/');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const UserController = {
     //user necesita ser creado, ser leido,  ser borrado, y ser editado
     async signup(req,res){
         try {
+            req.body.password = await bcrypt.hash(req.body.password, 9);
             const user = await User.create(req.body);
             res.status(201).send(user)
         } catch (error) {
@@ -20,6 +23,15 @@ const UserController = {
                     email: req.body.email
                 }
             })
+            const isMatch = await bcrypt.compare(req.body.password, user.password)
+            if (!isMatch) {
+                return res.status(400).send({
+                    message: 'Wrong credentials'
+                })
+            }
+            const token = jwt.sign({ id: user.id }, 'test_auth_password', { expiresIn: '30d' });
+            user.token = token; //añade el token a la instancia user
+            await user.save() // valida & actualiza en la base de datos la instancia de user
             res.send(user);
         } catch (error) {
             console.error(error);

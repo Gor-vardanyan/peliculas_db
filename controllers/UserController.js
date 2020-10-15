@@ -17,18 +17,20 @@ const UserController = {
         }
     },
     async login(req, res){
+        const isMatch = await bcrypt.compare(req.body.password, user.password)
+        if (!isMatch) {
+            return res.status(400).send({
+                message: 'Wrong credentials'
+            })
+        }
+
         try {
             const user = await User.findOne({
                 where: {
                     email: req.body.email
                 }
             })
-            const isMatch = await bcrypt.compare(req.body.password, user.password)
-            if (!isMatch) {
-                return res.status(400).send({
-                    message: 'Wrong credentials'
-                })
-            }
+
             const token = jwt.sign({ id: user.id }, 'test_auth_password', { expiresIn: '30d' });
             user.token = token; //añade el token a la instancia user
             await user.save() // valida & actualiza en la base de datos la instancia de user
@@ -36,6 +38,30 @@ const UserController = {
         } catch (error) {
             console.error(error);
             res.status(500).send({ message: 'There was a problem trying to login' })    
+        }
+    },
+    async profile(req,res){
+        try {
+            const user = req.user;
+            res.send(user);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({ message: 'You are not loged in' })    
+        }
+    },
+    async delete(req,res){
+        try {        
+            const user = await User.findOne({
+                where: {
+                  email: req.body.email
+                }
+            })
+            await user.destroy();
+            res.status(201).send({message: 'User deleted'})
+
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({ message: 'Something went wrong' })    
         }
     }
 }

@@ -3,7 +3,7 @@ const auth = require('./middleware/auth');
 const movieRouter = require('./route/movie');
 const userRouter = require('./route/user');
 const orderRouter = require('./route/order');
-
+const config = require(...dirname + '/../config/config.json')[env];
 const app = express();
 const PORT = 3000;
 

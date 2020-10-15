@@ -13,5 +13,10 @@ app.use('/user', userRouter);
 app.use('/movie', movieRouter);
 app.use('/order', orderRouter);
 
+if (config.use_env_variable) {
+    sequelize = new Sequelize(process.env[config.use_env_variable], config); 
+} else {
+     sequelize = new Sequelize(config.database, config.username, config. password, config); 
+    }
 
 app.listen(PORT, console.log("Server runing on port " + PORT));

@@ -1,12 +1,12 @@
 const express = require('express');
+require('dotenv').config()
 const auth = require('./middleware/auth');
 const movieRouter = require('./route/movie');
 const userRouter = require('./route/user');
 const orderRouter = require('./route/order');
 //const config = require('config/config.json')[env];
 const app = express();
-const PORT = 3000;
-
+const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.get('/', auth, (req, res) => res.send(req.user))
 app.use('/user', userRouter);

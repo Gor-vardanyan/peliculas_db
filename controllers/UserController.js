@@ -17,10 +17,6 @@ const UserController = {
         }
     },
     async login(req, res){
-        const isMatch = await bcrypt.compare(req.body.password, user.password)
-        if (!isMatch) {
-            return res.status(400).send('Wrong credentials')
-        }
 
         try {
             const user = await User.findOne({
@@ -29,6 +25,12 @@ const UserController = {
                 }
             })
 
+            const isMatch = await bcrypt.compare(req.body.password, user.password, (err)=>{
+                if(err){
+                    res.status(400).send({message:'Wrong credentials'})
+                }
+            });
+            
             const token = jwt.sign({ id: user.id }, 'test_auth_password', { expiresIn: '30d' });
             user.token = token; //añade el token a la instancia user
             await user.save() // valida & actualiza en la base de datos la instancia de user

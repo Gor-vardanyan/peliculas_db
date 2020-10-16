@@ -19,9 +19,7 @@ const UserController = {
     async login(req, res){
         const isMatch = await bcrypt.compare(req.body.password, user.password)
         if (!isMatch) {
-            return res.status(400).send({
-                message: 'Wrong credentials'
-            })
+            return res.status(400).send('Wrong credentials')
         }
 
         try {

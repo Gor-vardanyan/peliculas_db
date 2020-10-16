@@ -5,7 +5,7 @@
     "database": "peliculas_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "script": { 
+    "scripts": { 
       "start": "node app.js",
       "dev-server": "nodemon server/app.js"
     }
@@ -24,9 +24,8 @@
     "host": "us-cdbr-east-02.cleardb.com",
     "dialect": "mysql",
     "CLEARDB_DATABASE_URL": "mysql://b78dceaf9a4ae2:9575d533@us-cdbr-east-02.cleardb.com/heroku_b99363672215380?reconnect=true",
-    "script": { 
-      "start": "node app.js",
-      "dev-server": "nodemon server/app.js"
+    "scripts": { 
+      "start": "node app.js"
     }
   }
 }

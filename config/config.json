@@ -4,7 +4,11 @@
     "password": "633275522",
     "database": "peliculas_db",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "script": { 
+      "start" : "node app.js",
+      "dev-server": "nodemon server/app.js"
+    }
   },
   "test": {
     "username": "root",

@@ -5,8 +5,18 @@ const movieRouter = require('./route/movie');
 const userRouter = require('./route/user');
 const orderRouter = require('./route/order');
 //const config = require('config/config.json')[env];
+
 const app = express();
+//CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT,OPTIONS, DELETE");
+  next();
+});
 const PORT = process.env.PORT || 3000;
+
+
 app.use(express.json());
 app.get('/', auth, (req, res) => res.send(req.user))
 app.use('/user', userRouter);

@@ -26,7 +26,7 @@ module.exports = {
     try {
       const movies = [];
       const total_pages = await addMovies(movies, 1)
-      for (let i = 1; i < 10; i++) {
+      for (let i = 1; i < 100; i++) {
         await addMovies(movies, i);
         console.log(i)
     }

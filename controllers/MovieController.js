@@ -18,7 +18,7 @@ const MovieController = {
             res.send(movies);
         } catch (error) {
             console.error(error);
-            res.status(500).send({ message: 'There was a problem trying to get the movies' })
+            res.status(500).send({ message: error + ' There was a problem trying to get the movies' })
         }
     },
     async getByPk(req, res) {

@@ -13,11 +13,11 @@ const MovieController = {
     },
     async getPagination(req, res) {
         try {
-         let pagina = req.params.pagina;
-            const movies = await Movie.find({offset: (pagina*10), limit: 10});
+            let pagina = (parseInt(req.params.pagina));
+            let offset = ((pagina?pagina:0)*10);
+            const movies = await Movie.findAll({offset, limit: 10});
             res.send(movies);
         } catch (error) {
-            console.error(error);
             res.status(500).send({error})
         }
     },

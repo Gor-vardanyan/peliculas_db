@@ -34,7 +34,7 @@ const MovieController = {
     },
     async getByTitle(req, res) {
         try {
-            const movie = await Movie.findOne({where: {
+            const movie = await Movie.findall({where: {
                 title: req.params.title
               }});
             res.send(movie);

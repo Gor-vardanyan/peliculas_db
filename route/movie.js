@@ -5,7 +5,7 @@ const MovieController = require('../controllers/MovieController');
 //route.get('/', MovieController.getAll);
 route.get('/', MovieController.getPagination);
 route.get('/:pagina', MovieController.getPagination);
-route.get('/:id', MovieController.getByPk);
+route.get('/id/:id', MovieController.getByPk);
 route.get('/title/:title', MovieController.getByTitle);
 //route para post (crear pelicula)
 

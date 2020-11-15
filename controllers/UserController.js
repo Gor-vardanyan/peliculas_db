@@ -1,8 +1,18 @@
 const {User} = require('../models/');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const user = require('../models/user');
 const UserController = {
     //user necesita ser creado, ser leido,  ser borrado, y ser editado
+   
+   async findusers(req,res){
+    try {
+        let users = await User.findAll()
+        res.send(users);
+    } catch (error) {
+        console.log(error)
+    }
+   },
     async signup(req,res){
         try {
             req.body.password = await bcrypt.hash(req.body.password, 9);

@@ -49,6 +49,20 @@ const UserController = {
             res.status(500).send({ message: 'You are not loged in' })    
         }
     },
+    async rent(req,res){
+        try {
+            const user = await User.findOne({
+                where: {
+                  id: req.user.id
+                }
+            })
+            user.rented = req.params.id
+            await user.save();
+            res.send({user});
+        } catch (error) {
+            console.error(error)    
+        }
+    },
     async delete(req,res){
         try {        
             const user = await User.findOne({

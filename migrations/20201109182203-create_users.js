@@ -25,6 +25,9 @@ module.exports = {
           type: Sequelize.INTEGER,
           defaultValue: 0
         },
+        rented:{
+          type: Sequelize.STRING
+        },
         createdAt: {
           allowNull: false,
           type: Sequelize.DATE

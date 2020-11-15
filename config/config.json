@@ -18,12 +18,12 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "b78dceaf9a4ae2",
-    "password": "9575d533",
-    "database": "heroku_b99363672215380",
+    "username": "b7018b8ddb9fb6",
+    "password": "6be7fc80",
+    "database": "heroku_4c9d3fa7e48ab76",
     "host": "us-cdbr-east-02.cleardb.com",
     "dialect": "mysql",
-    "CLEARDB_DATABASE_URL": "mysql://b78dceaf9a4ae2:9575d533@us-cdbr-east-02.cleardb.com/heroku_b99363672215380?reconnect=true",
+    "CLEARDB_DATABASE_URL": "mysql://b7018b8ddb9fb6:6be7fc80@us-cdbr-east-02.cleardb.com/heroku_4c9d3fa7e48ab76?reconnect=true",
     "scripts": { 
       "start": "node app.js"
     }

@@ -58,7 +58,7 @@ const UserController = {
             })
             user.rented = req.params.id
             await user.save();
-            res.send({user});
+            res.send(user);
         } catch (error) {
             console.error(error)    
         }

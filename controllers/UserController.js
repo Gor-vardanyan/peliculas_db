@@ -7,7 +7,13 @@ const UserController = {
    
    async findusers(req,res){
     try {
-        let users = await User.findAll()
+        let users = await User.findAll({
+            where: {
+                role: 0
+            },
+            order: [
+            ['rented', 'DESC']
+        ]})
         res.send(users);
     } catch (error) {
         console.log(error)

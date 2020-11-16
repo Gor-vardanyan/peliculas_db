@@ -8,6 +8,6 @@ route.post('/login', UserController.login);
 route.post('/rent/:id', auth, UserController.rent);
 route.get('/delete', UserController.delete)
 route.get('/profile', auth, UserController.profile)
-route.post('/users', UserController.findusers);
+route.get('/users', UserController.findusers);
 
 module.exports = route;
